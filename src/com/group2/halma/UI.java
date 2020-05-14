@@ -64,7 +64,6 @@ public class UI {
         }
     }
 
-
     protected static JLabel getTitle(JFrame f){
         return (JLabel) f.getRootPane().getContentPane().getComponent(0);
     }
@@ -392,8 +391,11 @@ public class UI {
     protected static void play(JFrame f){
         SidePanel pL = new SidePanel(f);
 
-        Board pR = new Board(pL);
-//        System.out.println(pR.getPreferredSize());
+        BackgroundBoard Bg = new BackgroundBoard();
+        Board Br = new Board(pL);
+        JPanel pR = new JPanel();
+        pR.setLayout(new OverlayLayout(pR));
+        pR.add(Br);pR.add(Bg);
 
         JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pL, pR);
         sp.setDividerLocation(100);

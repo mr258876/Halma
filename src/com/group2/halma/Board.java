@@ -17,6 +17,8 @@ public class Board extends JPanel {
         this.setLayout(new GridLayout(16,16,1,1));
         this.matBoard = new Piece[16][16];
         this.sidePanel = sidePanel;
+//        this.setBackground(null);
+        this.setOpaque(false);
 
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
@@ -24,27 +26,6 @@ public class Board extends JPanel {
                 this.add(matBoard[i][j]);
             }
         }
-    }
-
-    protected void paintComponent(Graphics g) {
-        this.setBackground(boardList[0]);
-        g.setColor(boardList[1]);
-        super.paintComponent(g);
-        for(int i = 0; i < 16; i++){
-            g.drawRect(4 + i * ((getSize().width - 3) / 16), 4, ((getSize().width - 3) / 16), getSize().height - 10);
-            g.drawRect(4, 4 + i * ((getSize().height - 3) / 16),
-                    getSize().width - 9, (getSize().height - 3) / 16);
-//            g.setColor(Color.lightGray);
-//            g.fillRect(4 + i * ((getSize().width - 3) / 16) + 1, 4 + i * ((getSize().height - 3) / 16) + 1,
-//                    4 + (i+1) * ((getSize().width - 3) / 16) - 1, 4 + (i+1) * ((getSize().height - 3) / 16) - 1);
-        }
-
-    }
-
-    protected void paintBorder(Graphics g) {
-        g.setColor(getForeground());
-
-        g.drawRect(1, 1, getSize().width - 2, getSize().height - 2);
     }
 
     protected void getPiece(int i, int j) {
