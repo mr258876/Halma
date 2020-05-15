@@ -82,8 +82,15 @@ English
 灰色
 浅灰
 品红
-[switch GoBack]
-允许跳回:
+[switch ShowTips]
+显示提示:
 [board]
-背景颜色
-网格颜色
+网格1:
+网格2:
+[boardColors]
+米黄
+灰色
+白色
+淡灰
+[recommendPiece]
+提示

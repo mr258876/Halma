@@ -83,7 +83,14 @@ Gray
 LightGray
 Magenta
 [switch GoBack]
-GoBack:
+Show Tips:
 [board]
-Background
-Grid Color
+Grid 1
+Grid 2
+[boardColors]
+Beige
+Gray
+White
+Light gray
+[recommendPiece]
+Move Tips
