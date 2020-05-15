@@ -20,8 +20,9 @@ public class UI {
         f.setSize(500, 400);
         f.setLocation(200, 200);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        lang(language);
         f.setLayout(new FlowLayout(FlowLayout.CENTER,200,25));
+
+        lang(language);
 
         JLabel title = new JLabel();
         title.setFont(new java.awt.Font("微软雅黑", 1, 30));
@@ -64,37 +65,37 @@ public class UI {
         }
     }
 
-    protected static JLabel getTitle(JFrame f){
+    private static JLabel getTitle(JFrame f){
         return (JLabel) f.getRootPane().getContentPane().getComponent(0);
     }
 
-    protected static JPanel getMenu(JFrame f){
+    private static JPanel getMenu(JFrame f){
         return (JPanel) f.getRootPane().getContentPane().getComponent(1);
     }
 
-    protected static void clearMenu(JFrame f){
+    private static void clearMenu(JFrame f){
         for(Component i : getMenu(f).getComponents()){
             i.setVisible(false);
             getMenu(f).remove(i);
         }
     }
 
-    protected static void addBack(JFrame f){
+    private static void addBack(JFrame f){
         JButton back = new JButton(langLines.get(32));
         back.setPreferredSize(new Dimension(75,35));
         f.getRootPane().getContentPane().add(back);
     }
 
-    protected static JButton getBack(JFrame f){
+    private static JButton getBack(JFrame f){
         return (JButton) f.getRootPane().getContentPane().getComponent(2);
     }
 
-    protected static void removeBack(JFrame f){
+    private static void removeBack(JFrame f){
         f.getRootPane().getContentPane().getComponent(2).setVisible(false);
         f.getRootPane().getContentPane().remove(2);
     }
 
-    protected static void addFinish(JFrame f){
+    private static void addFinish(JFrame f){
         JButton back = new JButton(langLines.get(69));
         back.setPreferredSize(new Dimension(75,35));
         f.getRootPane().getContentPane().add(back);
@@ -132,7 +133,7 @@ public class UI {
         System.out.println("main menu done!");
     }
 
-    protected static void newGame(JFrame f){
+    private static void newGame(JFrame f){
         clearMenu(f);
 
         getTitle(f).setText(langLines.get(9));
@@ -163,7 +164,7 @@ public class UI {
         System.out.println("newGame menu done!");
     }
 
-    protected static void loadGame(JFrame f){
+    private static void loadGame(JFrame f){
         clearMenu(f);
 
         getTitle(f).setText(langLines.get(39));
@@ -197,8 +198,8 @@ public class UI {
 
 
         if(inGame) {
-            getMenu(f).setLayout(new GridLayout(2,1,10,10));
-            getMenu(f).setPreferredSize(new Dimension(150, 80));
+            getMenu(f).setLayout(new GridLayout(3,1,10,10));
+            getMenu(f).setPreferredSize(new Dimension(150, 125));
         } else {
             getMenu(f).setLayout(new GridLayout(4,1,10,10));
             getMenu(f).setPreferredSize(new Dimension(150, 170));
@@ -216,9 +217,9 @@ public class UI {
         JButton mHopping = new JButton();
         if(GamePlay.isMultiHopping()) { mHopping.setText(langLines.get(55) + langLines.get(57)); }
         else { mHopping.setText(langLines.get(55) + langLines.get(58)); }
-        JButton GoBack = new JButton();
-        if(GamePlay.isAllowGoBack()) { GoBack.setText(langLines.get(85) + langLines.get(57)); }
-        else { GoBack.setText(langLines.get(85) + langLines.get(58)); }
+        JButton ShowTips = new JButton();
+        if(Board.isShowTips()) { ShowTips.setText(langLines.get(85) + langLines.get(57)); }
+        else { ShowTips.setText(langLines.get(85) + langLines.get(58)); }
 
         lang.addActionListener(e -> {
             removeBack(f);
@@ -233,21 +234,21 @@ public class UI {
             if(GamePlay.isMultiHopping()) { mHopping.setText(langLines.get(55) + langLines.get(57)); }
             else { mHopping.setText(langLines.get(55) + langLines.get(58)); }
         });
-        GoBack.addActionListener(e -> {
-            GamePlay.setAllowGoBack(!GamePlay.isAllowGoBack());
-            if(GamePlay.isAllowGoBack()) { GoBack.setText(langLines.get(55) + langLines.get(57)); }
-            else { GoBack.setText(langLines.get(55) + langLines.get(58)); }
+        ShowTips.addActionListener(e -> {
+            Board.setShowTips(!Board.isShowTips());
+            if(Board.isShowTips()) { ShowTips.setText(langLines.get(55) + langLines.get(57)); }
+            else { ShowTips.setText(langLines.get(55) + langLines.get(58)); }
         });
 
         getMenu(f).add(lang);
         getMenu(f).add(theme);
         if(!inGame) { getMenu(f).add(mHopping); }
-//        if(!inGame) { getMenu(f).add(GoBack); }
+        getMenu(f).add(ShowTips);
 
         System.out.println("setting menu done!");
     }
 
-    protected static void setLang(JFrame f, boolean inGame){
+    private static void setLang(JFrame f, boolean inGame){
         clearMenu(f);
 
         getTitle(f).setText(langLines.get(34));
@@ -292,7 +293,7 @@ public class UI {
         System.out.println("setLang menu done!");
     }
 
-    protected static void about(JFrame f){
+    private static void about(JFrame f){
         clearMenu(f);
 
         getTitle(f).setText(langLines.get(30));
@@ -311,7 +312,7 @@ public class UI {
         System.out.println("about done!");
     }
 
-    protected static void singlePlay(JFrame f){
+    private static void singlePlay(JFrame f){
         clearMenu(f);
 
         getTitle(f).setText(langLines.get(14));
@@ -355,7 +356,7 @@ public class UI {
         System.out.println("singlePlay menu done!");
     }
 
-    protected static void multiPlay(JFrame f){
+    private static void multiPlay(JFrame f){
         clearMenu(f);
 
         getTitle(f).setText(langLines.get(20));
@@ -388,7 +389,7 @@ public class UI {
         System.out.println("multiPlay menu done!");
     }
 
-    protected static void play(JFrame f){
+    private static void play(JFrame f){
         SidePanel pL = new SidePanel(f);
 
         BackgroundBoard Bg = new BackgroundBoard();
@@ -402,7 +403,7 @@ public class UI {
         f.setContentPane(sp);
     }
 
-    protected static void playReset(){
+    private static void playReset(){
 //        Use this only when is in playing
         f.setContentPane(new Container());
         mainReset();
@@ -443,7 +444,7 @@ public class UI {
         return fi;
     }
 
-    protected static void theme(JFrame f, boolean inGame){
+    private static void theme(JFrame f, boolean inGame){
         clearMenu(f);
 
         getTitle(f).setText(langLines.get(28));
@@ -499,7 +500,7 @@ public class UI {
         }
     }
 
-    protected static boolean load(JFrame f){
+    private static boolean load(JFrame f){
         JFileChooser fc = new JFileChooser();
         fc.setFileFilter(new FileFilter() {
             @Override
@@ -526,10 +527,10 @@ public class UI {
         }
     }
 
-    protected static void pieceColor(JFrame f, boolean inGame){
-        ArrayList<Color> colors = new ArrayList<Color>(Arrays.asList(Color.red, Color.green, Color.yellow, Color.black, Color.blue,
-                Color.pink, Color.white, Color.cyan, Color.orange, Color.darkGray, Color.gray, Color.lightGray,
-                Color.magenta));
+    private static void pieceColor(JFrame f, boolean inGame){
+        ArrayList<Color> colors = new ArrayList<Color>(Arrays.asList(Color.red, Color.green, Color.yellow, Color.black,
+                Color.blue, Color.pink, Color.white, Color.cyan, Color.orange, Color.darkGray, Color.gray,
+                Color.lightGray, Color.magenta));
 
         String[] strColors = new String[] {langLines.get(71), langLines.get(72), langLines.get(73), langLines.get(74),
                 langLines.get(75), langLines.get(76), langLines.get(77), langLines.get(78), langLines.get(79),
@@ -539,8 +540,8 @@ public class UI {
 
         getTitle(f).setText(langLines.get(60));
 
-        getMenu(f).setLayout(new GridLayout(5,2,3,10));
-        getMenu(f).setPreferredSize(new Dimension(150, 125));
+        getMenu(f).setLayout(new GridLayout(6,2,3,10));
+        getMenu(f).setPreferredSize(new Dimension(150, 160));
 
         addFinish(f);
 
@@ -549,6 +550,7 @@ public class UI {
         JLabel p3 = new JLabel(langLines.get(65));
         JLabel p4 = new JLabel(langLines.get(66));
         JLabel p5 = new JLabel(langLines.get(67));
+        JLabel p6 = new JLabel(langLines.get(95));
 
         JComboBox<String> cp1 = new JComboBox<>(strColors);
         cp1.setSelectedIndex(colors.indexOf(Board.getPieceList()[0]));
@@ -560,6 +562,8 @@ public class UI {
         cp4.setSelectedIndex(colors.indexOf(Board.getPieceList()[3]));
         JComboBox<String> cp5 = new JComboBox<>(strColors);
         cp5.setSelectedIndex(colors.indexOf(Board.getPieceList()[4]));
+        JComboBox<String> cp6 = new JComboBox<>(strColors);
+        cp5.setSelectedIndex(colors.indexOf(Board.getPieceList()[5]));
 
         getBack(f).addActionListener(e -> {
             Board.getPieceList()[0] = colors.get(cp1.getSelectedIndex());
@@ -567,6 +571,7 @@ public class UI {
             Board.getPieceList()[2] = colors.get(cp3.getSelectedIndex());
             Board.getPieceList()[3] = colors.get(cp4.getSelectedIndex());
             Board.getPieceList()[4] = colors.get(cp5.getSelectedIndex());
+            Board.getPieceList()[5] = colors.get(cp6.getSelectedIndex());
             if(inGame) { playReset(); }
             removeBack(f);
             settings(f, inGame);
@@ -582,17 +587,17 @@ public class UI {
         getMenu(f).add(cp4);
         getMenu(f).add(p5);
         getMenu(f).add(cp5);
+        getMenu(f).add(p6);
+        getMenu(f).add(cp6);
 
     }
 
-    protected static void boardColor(JFrame f, boolean inGame){
-        ArrayList<Color> colors = new ArrayList<Color>(Arrays.asList(Color.red, Color.green, Color.yellow, Color.black, Color.blue,
-                Color.pink, Color.white, Color.cyan, Color.orange, Color.darkGray, Color.gray, Color.lightGray,
-                Color.magenta));
+    private static void boardColor(JFrame f, boolean inGame){
+        ArrayList<Color> colors = new ArrayList<Color>(Arrays.asList(new Color(255, 255, 204),
+                new Color(170, 170, 170), new Color(241, 241, 241),
+                new Color(152, 152, 152)));
 
-        String[] strColors = new String[] {langLines.get(71), langLines.get(72), langLines.get(73), langLines.get(74),
-                langLines.get(75), langLines.get(76), langLines.get(77), langLines.get(78), langLines.get(79),
-                langLines.get(80), langLines.get(81), langLines.get(82), langLines.get(83)};
+        String[] strColors = new String[] {langLines.get(90), langLines.get(91), langLines.get(92), langLines.get(93)};
 
         clearMenu(f);
 
@@ -607,13 +612,13 @@ public class UI {
         JLabel p2 = new JLabel(langLines.get(88));
 
         JComboBox<String> cp1 = new JComboBox<>(strColors);
-        cp1.setSelectedIndex(colors.indexOf(Board.getBoardList()[0]));
+        cp1.setSelectedIndex(colors.indexOf(BackgroundBoard.getBoardColor()[0]));
         JComboBox<String> cp2 = new JComboBox<>(strColors);
-        cp2.setSelectedIndex(colors.indexOf(Board.getBoardList()[1]));
+        cp2.setSelectedIndex(colors.indexOf(BackgroundBoard.getBoardColor()[1]));
 
         getBack(f).addActionListener(e -> {
-            Board.getBoardList()[0] = colors.get(cp1.getSelectedIndex());
-            Board.getBoardList()[1] = colors.get(cp2.getSelectedIndex());
+            BackgroundBoard.getBoardColor()[0] = colors.get(cp1.getSelectedIndex());
+            BackgroundBoard.getBoardColor()[1] = colors.get(cp2.getSelectedIndex());
             if(inGame) { playReset(); }
             removeBack(f);
             settings(f, inGame);

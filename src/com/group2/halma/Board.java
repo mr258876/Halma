@@ -2,22 +2,23 @@ package com.group2.halma;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Board extends JPanel {
-    private static Color[] pieceList = new Color[] {Color.red, Color.green, Color.yellow, Color.black, Color.blue};
-    private static Color[] boardList = new Color[] {Color.lightGray, Color.black};
+    private static Color[] pieceList = new Color[] {Color.red, Color.green, Color.yellow, Color.black,
+            Color.blue, Color.cyan};
     private static int style = 0;
     private Piece[][] matBoard;
     private boolean pieceSelected = false;
     private int selectedX;
     private int selectedY;
     private SidePanel sidePanel;
+    private static boolean showTips = true;
 
     public Board(SidePanel sidePanel){
         this.setLayout(new GridLayout(16,16,1,1));
         this.matBoard = new Piece[16][16];
         this.sidePanel = sidePanel;
-//        this.setBackground(null);
         this.setOpaque(false);
 
         for (int i = 0; i < 16; i++) {
@@ -58,6 +59,22 @@ public class Board extends JPanel {
         });
     }
 
+    protected void recommendPiece(int x, int y) {
+        ArrayList<String> available = GamePlay.nextStepCheck(x, y, GamePlay.getHopped());
+        for(String position : available){
+            int x1 = Integer.parseInt(position.substring(0, position.indexOf(" ")));
+            int y1 = Integer.parseInt(position.substring(position.indexOf(" ") + 1));
+            matBoard[x1][y1].setVisible(false);
+            this.remove(x1 * 16 + y1);
+            matBoard[x1][y1] = new Piece(true);
+            matBoard[x1][y1].setBackground(pieceList[5]);
+            matBoard[x1][y1].addActionListener(e -> {
+                clickAction(x1, y1);
+            });
+            this.add(matBoard[x1][y1], x1*16 + y1);
+        }
+    }
+
     protected void clickAction(int finalI, int finalJ){
         System.out.println("clicked(" + finalI + ", " + finalJ + ")");
         if(pieceSelected){
@@ -90,6 +107,7 @@ public class Board extends JPanel {
         selectedY = y;
         pieceSelected = true;
         matBoard[x][y].setBackground(pieceList[4]);
+        recommendPiece(x, y);
         System.out.println("selected(" + selectedX + ", " + selectedY + ")!");
     }
 
@@ -117,5 +135,7 @@ public class Board extends JPanel {
     }
 
     protected static Color[] getPieceList() { return pieceList; }
-    protected static Color[] getBoardList() { return boardList; }
+    public static boolean isShowTips() { return showTips; }
+
+    public static void setShowTips(boolean showTips1) { showTips = showTips1; }
 }

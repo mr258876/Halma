@@ -18,6 +18,14 @@ public class GamePlay {
     private static int lastX;
     private static int lastY;
 
+//   | NOTICE!!!!!                                                   |
+//   |                                                               |
+//   | In the following codes, X means column and Y means row        |
+//   |                                                               |
+//   | I was not able to fix it when I realized this serious problem |
+//   |                                                               |
+//   | So, good luck!                                                |
+//   |                                         From author @mr258876 |
 
     protected GamePlay(int numPlayers){
         players = numPlayers;
@@ -94,7 +102,7 @@ public class GamePlay {
         int drX, drY;
         if(opX == 0) {drX = 0;} else {drX = opX / abs(opX);}
         if(opY == 0) {drY = 0;} else {drY = opY / abs(opY);}
-        if(board[x0 + drX][y0 + drY] != 0 && (opX * opY != 2 || opX * opY != -2)){
+        if(board[x0 + drX][y0 + drY] != 0 && (opX * opY != 2 && opX * opY != -2)){
             if( !hopped ){
                 board[x0][y0] = 0;
                 board[x1][y1] = role;
@@ -131,19 +139,25 @@ public class GamePlay {
 
     protected static ArrayList<String> nextStepCheck(int x, int y, boolean hopping){
         ArrayList<String> list = new ArrayList<>();
+//        System.out.println(lastX);
+//        System.out.println(lastY);
         if(!hopping) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    if (moveCheck(x, y, x + i - 1, y + j - 1) && (x + i - 1 != lastX || y + j - 1 != lastY)) {
-                        list.add((x + i - 1) + " " + (y + i - 1));
+                    if(0 < x+i-1 && x+i-1 < 16 && 0 < y+j-1 && y+j-1 < 16) {
+                        if(moveCheck(x, y, x + i - 1, y + j - 1) && (x + i - 1 != lastX || y + j - 1 != lastY)){
+                            list.add((x+i-1) + " " + (y+j-1));
+                        }
                     }
                 }
             }
         }
-        for(int i = 0; i < 5; i += 4) {
-            for (int j = 0; j < 5; j += 4) {
-                if(moveCheck(x, y, x+i-2, y+j-2) && (x+i-2 != lastX || y+j-2 != lastY)){
-                    list.add((x+i-2) + " " + (y+i-2));
+        for(int i = 0; i < 5; i += 2) {
+            for (int j = 0; j < 5; j += 2) {
+                if(0 < x+i-2 && x+i-2 < 16 && 0 < y+j-2 && y+j-2 < 16) {
+                    if(moveCheck(x, y, x + i - 2, y + j - 2) && (x + i - 2 != lastX || y + j - 2 != lastY)){
+                        list.add((x + i - 2) + " " + (y + j - 2));
+                    }
                 }
             }
         }
@@ -169,8 +183,7 @@ public class GamePlay {
         if(opY == 0) {drY = 0;} else {drY = opY / abs(opY);}
         if(board[x0 + drX][y0 + drY] != 0 && (opX * opY != 2 || opX * opY != -2)){
             if( !hopped ){
-                if(multiHopping){ return true; }
-                else { nextRole(); return true; }
+                return true;
             }else if(hopX == x0 && hopY == y0){
                 return true;
             }else {
