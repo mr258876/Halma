@@ -94,3 +94,17 @@ English
 淡灰
 [recommendPiece]
 提示
+[load error]
+加载错误! 请检查文件.
+[save error]
+保存错误! 请检查文件.
+[Load]
+读档
+[more load error]
+棋子数量不正确
+棋盘错误
+开局已有玩家胜利
+玩家数量不正确
+[Team Quad]
+团队四人模式
+阵营

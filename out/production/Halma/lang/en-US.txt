@@ -94,3 +94,17 @@ White
 Light gray
 [recommendPiece]
 Move Tips
+[load error]
+Load Game Error! Please check your file.
+[save error]
+Save Game Error! Please check your file.
+[Load]
+Load
+[more load error]
+Invalid number of pieces
+Invalid piece position
+Players have already won
+Invalid number of players
+[Team Quad]
+4P in Team
+Team

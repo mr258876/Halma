@@ -1,5 +1,7 @@
 package com.group2.halma;
 
+import com.group2.halma.UI.UI;
+
 import javax.swing.*;
 
 public class Halma {
