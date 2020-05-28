@@ -1,0 +1,112 @@
+[title]
+正方跳棋
+[main menu]
+新游戏
+继续
+设置
+关于
+退出
+[newGame title]
+选择模式
+[newGame menu]
+单人游戏
+本地多人游戏
+[singleGame title]
+选择难度
+[singleGame menu]
+初级
+中级
+高级
+[multiGame title]
+选择人数
+[multiGame menu]
+双人游戏
+四人游戏
+[setting title]
+设置
+[setting menu]
+语言
+主题
+[about title]
+关于
+[back]
+返回
+[setLang title]
+语言选择
+[setLang menu]
+中文
+English
+[loadGame title]
+加载游戏
+[loadGame menu]
+选择存档
+[LP menu]
+保存
+设置
+玩家
+的回合
+[saveGame title]
+存档保存至
+[Winner]
+玩家
+获胜！
+[endRole]
+结束回合
+[switch hopping]
+允许连跳:
+[switch]
+ 开
+ 关
+[theme]
+棋子颜色
+棋盘颜色
+[piece]
+玩家1
+玩家2
+玩家3
+玩家4
+选中时
+[Finish]
+完成
+[colors]
+红色
+绿色
+黄色
+黑色
+蓝色
+粉色
+白色
+青色
+橙子
+深灰
+灰色
+浅灰
+品红
+[switch ShowTips]
+显示提示:
+[board]
+网格1:
+网格2:
+[boardColors]
+米黄
+灰色
+白色
+淡灰
+[recommendPiece]
+提示
+[load error]
+加载错误! 请检查文件.
+[save error]
+保存错误! 请检查文件.
+[Load]
+读档
+[more load error]
+棋子数量不正确
+棋盘错误
+开局已有玩家胜利
+玩家数量不正确
+[Team Quad]
+团队四人模式
+阵营
+[random first]
+随机先手:

@@ -1,0 +1,112 @@
+[title]
+HALMA
+[main menu]
+New Game
+Continue
+Settings
+About
+Exit
+[newGame title]
+Select Mode
+[newGame menu]
+Single Player
+Multi Players
+[singleGame title]
+Select Difficulty
+[singleGame menu]
+Easy
+Medium
+Hard
+[multiGame title]
+Select Players
+[multiGame menu]
+2 Players
+4 Players
+[setting title]
+Settings
+[setting menu]
+Language
+Theme
+[about]
+About
+[back]
+Back
+[setLang title]
+Select language
+[setLang menu]
+中文
+English
+[loadGame title]
+Load Game
+[loadGame menu]
+Select file
+[LP menu]
+Save
+Settings
+Player
+move
+[saveGame title]
+Save to
+[Winner]
+Player
+ wins!
+[endRole]
+End Move
+[switch hopping]
+Multi-Hopping:
+[switch]
+ On
+ Off
+[theme]
+Piece Color
+Board Color
+[piece]
+Player 1
+Player 2
+Player 3
+Player 4
+Selected
+[Finish]
+Finish
+[colors]
+Red
+Green
+Yellow
+Black
+Blue
+Pink
+White
+Cyan
+Orange
+DarkGray
+Gray
+LightGray
+Magenta
+[switch GoBack]
+Show Tips:
+[board]
+Grid 1
+Grid 2
+[boardColors]
+Beige
+Gray
+White
+Light gray
+[recommendPiece]
+Move Tips
+[load error]
+Load Game Error! Please check your file.
+[save error]
+Save Game Error! Please check your file.
+[Load]
+Load
+[more load error]
+Invalid number of pieces
+Invalid piece position
+Players have already won
+Invalid number of players
+[Team Quad]
+4P in Team
+Team
+[random first]
+Random start:
